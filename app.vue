@@ -57,25 +57,23 @@ const submitForm = async () => {
   message.value = "";
 
   try {
-    // 使用 JSONP 方式發送請求
-    const script = document.createElement("script");
-    const callbackName = "jsonpCallback_" + Date.now();
-    window[callbackName] = (response) => {
-      if (response.status === "success") {
-        message.value = "表單已成功送出！";
-        messageType.value = "success";
-        formData.value = { name: "", phone: "" };
-      } else {
-        throw new Error("提交失敗");
+    const response = await fetch('/api/submit', {
+      method: 'POST',
+      body: JSON.stringify(formData.value),
+      headers: {
+        'Content-Type': 'application/json'
       }
-      document.body.removeChild(script);
-      delete window[callbackName];
-    };
-
-    const config = useRuntimeConfig();
-    const data = encodeURIComponent(JSON.stringify(formData.value));
-    script.src = `${config.public.gasUrl}?callback=${callbackName}&data=${data}`;
-    document.body.appendChild(script);
+    });
+    
+    const result = await response.json();
+    
+    if (result.status === "success") {
+      message.value = "表單已成功送出！";
+      messageType.value = "success";
+      formData.value = { name: "", phone: "" };
+    } else {
+      throw new Error("提交失敗");
+    }
   } catch (error) {
     message.value = "提交失敗，請稍後再試";
     messageType.value = "error";
