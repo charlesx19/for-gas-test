@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
 
   try {
     const response = await fetch(config.gasUrl, {
-      method: "POST",
+      method: "GET",
       body: JSON.stringify(body),
       headers: {
         "Content-Type": "application/json",
