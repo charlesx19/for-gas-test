@@ -10,9 +10,9 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    const response = await fetch(config.gasUrl, {
+    const data = encodeURIComponent(JSON.stringify(body));
+    const response = await fetch(`${config.gasUrl}?data=${data}`, {
       method: "GET",
-      body: JSON.stringify(body),
       headers: {
         "Content-Type": "application/json",
       },

@@ -58,7 +58,7 @@ const submitForm = async () => {
 
   try {
     const response = await fetch('/api/submit', {
-      method: 'GET',
+      method: 'POST',
       body: JSON.stringify(formData.value),
       headers: {
         'Content-Type': 'application/json'
