@@ -72,8 +72,9 @@ const submitForm = async () => {
       delete window[callbackName];
     };
 
+    const config = useRuntimeConfig();
     const data = encodeURIComponent(JSON.stringify(formData.value));
-    script.src = `https://script.google.com/macros/s/AKfycbwicIQHWzWvAO7Q-eClN9uwSNhbjtJ7qlonsIgEKB1S5lMIAEZAkjuIfT7Q-QccxFVS/exec?callback=${callbackName}&data=${data}`;
+    script.src = `${config.public.gasUrl}?callback=${callbackName}&data=${data}`;
     document.body.appendChild(script);
   } catch (error) {
     message.value = "提交失敗，請稍後再試";

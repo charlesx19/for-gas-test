@@ -1,9 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
+
   app: {
-    baseURL: "/for-gas-test/", // 替換成您的 GitHub 倉庫名稱
-    buildAssetsDir: "/_nuxt/",
+    baseURL: '/for-gas-test/',
+    buildAssetsDir: '/_nuxt/'
   },
-});
+
+  runtimeConfig: {
+    public: {
+      gasUrl: process.env.NUXT_PUBLIC_GAS_URL
+    }
+  },
+
+  compatibilityDate: '2025-04-01'
+})
