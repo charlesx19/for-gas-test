@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">聯絡表單</h1>
+    <h1 class="text-2xl font-bold mb-4">聯絡表單(已修改)</h1>
     <form @submit.prevent="submitForm" class="max-w-md">
       <div class="mb-4">
         <label for="name" class="block text-sm font-medium mb-1">姓名</label>
