@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-const targetUrl = 'https://jolly-island-0b20ee200.6.azurestaticapps.net/relationship'; // 請替換成您想要嵌入的網址
+const targetUrl = 'https://contact.u-power.com.tw'; // 請替換成您想要嵌入的網址
 </script>
 
 <style>
